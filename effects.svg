@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+
+  <filter id="Blur">
+  	<feGaussianBlur stdDeviation="3"/>
+  </filter>
+  
+  <filter id="Saturate">
+  	<feColorMatrix type="saturate" values="0.5" />
+  </filter>
+  
+  <filter id="DropShadow">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+    <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
+    <feMerge>
+      <feMergeNode in="offsetBlur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  
+  <filter id="Sharp">
+    <feConvolveMatrix in="SourceGraphic" order="3" kernelMatrix="0,-0.2,0,-0.2,1.8,-0.2,0,-0.2,0"/>
+  </filter>
+  
+  <filter id="Invert" >
+    <feColorMatrix in="SourceGraphic" type="matrix" values="-1,0,0,0,1,0,-1,0,0,1,0,0,-1,0,1,0,0,0,1,0"/>
+  </filter>
+  
+  <filter id="GrayScale">  
+		<feColorMatrix values="0.333,0.333,0.333,0,0,0.333,0.333,0.333,0,0,0.333,0.333,0.333,0,0,0,0,0,1,0"/>  
+  </filter>
+  
+  <mask id="Mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">  
+    <linearGradient id="g" gradientUnits="objectBoundingBox" x2="0" y2="1">  
+      <stop stop-color="white" offset="0"/>  
+      <stop stop-color="white" stop-opacity="0" offset="1"/>  
+    </linearGradient>  
+    <circle cx="0.5" cy="0.5" r="0.5" fill="url(#g)"/>
+  </mask>
+
+  <mask id="Mask2">
+    <text x="0" y="50" font-size="50" font-family="serif" font-weight="bold" fill="#ffffff">文字列</text>
+    <text x="0" y="100" font-size="50" font-family="serif" font-weight="bold" fill="#ffffff">マスク</text>
+  </mask>
+  
+</svg>
